@@ -118,26 +118,18 @@ class _TestWidgetState extends State<TestWidget> {
             child: Text('${index + 1}', style: TextStyle(fontSize: 32)),
           )));
   PreferredSizeWidget sappBar(BuildContext context) {
-    return AppBar(
-        backgroundColor: Theme.of(context).backgroundColor,
-        leading: IconButton(
-            icon: Icon(CupertinoIcons.arrowtriangle_left_circle_fill),
-            onPressed: () {}),
-        actions: [
-          Builder(builder: (context) {
-            exController = ExpandableController.of(context, required: true)!;
-            lvController.addListener(listenScrolling);
-            return IconButton(
-                icon: Icon(CupertinoIcons.rectangle_compress_vertical),
-                onPressed: () {
-                  setState(() {
-                    exController.toggle();
-                  });
-                });
-          }),
-          IconButton(icon: Icon(CupertinoIcons.bell), onPressed: () {}),
-          IconButton(
-              icon: Icon(CupertinoIcons.ellipsis_vertical), onPressed: () {})
-        ]);
+    return AppBar(backgroundColor: Theme.of(context).backgroundColor, actions: [
+      Builder(builder: (context) {
+        exController = ExpandableController.of(context, required: true)!;
+        lvController.addListener(listenScrolling);
+        return IconButton(
+            icon: Icon(CupertinoIcons.rectangle_compress_vertical),
+            onPressed: () {
+              setState(() {
+                exController.toggle();
+              });
+            });
+      }),
+    ]);
   }
 }
